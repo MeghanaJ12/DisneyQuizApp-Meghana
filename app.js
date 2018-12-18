@@ -30,12 +30,12 @@ const store = {
 
   'questions': [{
       'question': 'What does Ariel collect?',
-      'answers': ['Sea shells', 'eels', 'human items', 'seaweed'],
+      'answers': ['Sea shells', 'Eels', 'Human items', 'Seaweed'],
       'correct': 2
     },
     {
       'question': 'How many stepsisters does cinderella have?',
-      'answers': ['Two', 'Three', 'Eight', 'one'],
+      'answers': ['Two', 'Three', 'Eight', 'One'],
       'correct': 0
     },
     {
@@ -45,7 +45,7 @@ const store = {
     },
     {
       'question': 'What was Dory\'s first line in the movie Finding Dory?',
-      'answers': ['Look Out', 'Hi, I am Dory', 'Just keep swimming', 'Hey there Mr. Grumpy Grills'],
+      'answers': ['Look Out', 'Hi, I am Dory', 'Just keep swimming', 'Hey there, Mr. Grumpy Grills'],
       'correct': 1
     },
     {
@@ -60,8 +60,8 @@ const store = {
       'correct': 3
     },
     {
-      'question': 'What did Alladin steal from the market?',
-      'answers': ['Lamp', 'gold', 'bread', 'cake'],
+      'question': 'What did Aladdin steal from the market?',
+      'answers': ['Lamp', 'Gold', 'Bread', 'Cake'],
       'correct': 2
     }
   ],
@@ -93,6 +93,7 @@ function renderResult() {
   $('.app').html(generateResultHTML());
   console.log(store.score);
 }
+
 //this will reset to the first question and score and current index set to 0
 function restartQuiz() {
   $('.app').on('click', '.restart', function () {
@@ -112,19 +113,20 @@ function handleStartButton() {
 
 function generateQuestionHTML(question) {
   $('.app').html(`<div class="container">
-				<header><h2class ='title'>The Disney Quiz</h2></header>
+        <header><h2>The Disney Quiz</h2></header>
 
-        	<p> Question ${store.currentIndex + 1}
-          out of 7</p>
-          <legend> <h2> ${question.question}</h2></legend >
-				<form action="none" class ="questionForm" >
+        <form action="none" class ="questionForm" >
+
+        <h2> Question ${store.currentIndex + 1}
+          of 7: ${question.question}</h2>
+
 				<fieldset class="questionchoices">
 
 
 
 						${question.answers.map(function (answer, index) {
-        return ` <div class="form-group"><input id="ans-${index}" type="radio" name ='answers'  value = '${index}' required >
-							<label for="ans-${index}" id = "ans">${answer}</label></input></div>`;
+        return ` <div><input id="ans-${index}" type="radio" name ='answers'  value = '${index}' required >
+							<label for="ans-${index}" id = "ans">${answer}</label></input> </div>`;
       }).join('')}
 						</fieldset>
 							<button id ='submitButton'> Submit</button>
@@ -137,19 +139,15 @@ function generateQuestionHTML(question) {
 
 function generateResultHTML() {
   if (store.score > 5) {
-    $('.app').html(`<div class = "goodResult Result" ><h1> You scored  ${store.score} / 7.<br>
-	*************************************************************<br>
-	             You are a true Disney lover  !!! <br>
-	*************************************************************</h1>
+    $('.app').html(`<div class = "goodResult Result" > <h1> You scored  ${store.score} / 7. </h1>
+               <h2> You are a true Disney lover!!! <h2>
+               <img src = https://media.giphy.com/media/bdmmfJT2wanks/giphy.gif alt = Fireworks at Disney height=50% width=50%>
 	<h2>You may retake the Quiz</h2>
 	<p> <button  class='restart' > Restart </button></p>`);
   } else {
-    $('.app').html(`<div class="badResult Result" ><h1>Your score is ${store.score} /7 . <br>
-	*************************************************************<br>
-	Better luck next time!!! <br>
-	**************************************************************
-		</h1>
-
+    $('.app').html(`<div class="badResult Result" ><h1>Your score is ${store.score} /7 . </h1>
+  <h2> Better luck next time!!! </h2>
+  <img src = https://media.giphy.com/media/Lb3vIJjaSIQWA/giphy.gif alt = "Big Hero gives a hug" height=50% width=50%>
 	<h2>You may retake the Quiz</h2>
 	<p> <button  class='restart' > Restart </button></p>
 	</div>`);
@@ -178,15 +176,17 @@ function handleSubmitQuestion() {
 }
 
 function showWrongFeedBackPage() {
-  $('.app').html(`<h2> Sorry you are Wrong.The correct answer is
+  $('.app').html(`<h2> Sorry, you are wrong. The correct answer is
 
-  "${store.currentQuestion.answers[store.currentQuestion.correct]} "</h2>
+  "${store.currentQuestion.answers[store.currentQuestion.correct]}" </h2>
+  <img src="https://media.giphy.com/media/9YKHJycHTSZ2M/giphy.gif" alt = "A disappointed cat" height=50% width=50%>
   <p><button class ="submit-Question">Next Question</button></p>`)
   showNextPage();
 }
 
 function showCorrectFeedBackPage() {
-  $('.app').html(`<h2> You are Correct</h2>
+  $('.app').html(`<h2> You are Correct! </h2>
+  <img src = "https://media.giphy.com/media/1X6GxAMkbkLcJKLQy5/giphy.gif" alt = "An excited Micky Mouse" height=50% width=50%>
   <p><button class ="submit-Question">Next Question</button></p>`)
   showNextPage();
 }
