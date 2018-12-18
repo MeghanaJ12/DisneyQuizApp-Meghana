@@ -55,7 +55,7 @@ const store = {
     },
 
     {
-      'question': 'What is the name of Micky Mouse\'s dog?',
+      'question': 'What is the name of Mickey Mouse\'s dog?',
       'answers': ['Mars', 'Neptune', 'Goofy', 'Pluto'],
       'correct': 3
     },
@@ -176,17 +176,20 @@ function handleSubmitQuestion() {
 }
 
 function showWrongFeedBackPage() {
-  $('.app').html(`<h2> Sorry, you are wrong. The correct answer is
+  $('.app').html(`<h2> The correct answer is
 
   "${store.currentQuestion.answers[store.currentQuestion.correct]}" </h2>
-  <img src="https://media.giphy.com/media/9YKHJycHTSZ2M/giphy.gif" alt = "A disappointed cat" height=50% width=50%>
+  <img src = "https://media.giphy.com/media/3ohc1ffY03hnhRUyUU/giphy.gif"
+  alt = "Sorry">
   <p><button class ="submit-Question">Next Question</button></p>`)
   showNextPage();
 }
 
 function showCorrectFeedBackPage() {
   $('.app').html(`<h2> You are Correct! </h2>
-  <img src = "https://media.giphy.com/media/1X6GxAMkbkLcJKLQy5/giphy.gif" alt = "An excited Micky Mouse" height=50% width=50%>
+  <img src="https://media.giphy.com/media/aQYR1p8saOQla/giphy.gif"
+  alt="An excited Anna"
+  >
   <p><button class ="submit-Question">Next Question</button></p>`)
   showNextPage();
 }

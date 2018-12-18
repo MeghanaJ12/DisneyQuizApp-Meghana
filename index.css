@@ -21,7 +21,7 @@ h3 {
 
 body {
   display: flex;
-  line-height: 1.2em;
+  line-height: 1.5em;
   height: 700px;
   background-image: url('backgroundImg.jpg');
   background-repeat: no-repeat;
